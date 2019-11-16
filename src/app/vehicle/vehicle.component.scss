@@ -14,5 +14,14 @@
       display: block;
       padding: 16px;
     }
+
+    .spinner-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .spinner-container > span {
+      flex: 1;
+    }
   }
 }

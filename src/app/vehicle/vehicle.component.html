@@ -4,24 +4,45 @@
     <button mat-raised-button (click)="resetFilters()">Reset Filters</button>
 
     <mat-form-field>
-      <mat-label>Vehicle Types</mat-label>
+      <mat-label *ngIf="!loading">Vehicle Types</mat-label>
       <mat-select [(value)]="selectedType" [disabled]="!hasData">
         <mat-option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</mat-option>
       </mat-select>
+
+      <mat-label *ngIf="loading">
+        <div class="spinner-container">
+          <span>Loading...</span>
+          <mat-spinner class="spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-label>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Vehicle Brands</mat-label>
+      <mat-label *ngIf="!loading">Vehicle Brands</mat-label>
       <mat-select [(value)]="selectedBrand" [disabled]="!hasData">
         <mat-option *ngFor="let brand of vehicleBrands" [value]="brand">{{ brand }}</mat-option>
       </mat-select>
+
+      <mat-label *ngIf="loading">
+        <div class="spinner-container">
+          <span>Loading...</span>
+          <mat-spinner class="spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-label>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Vehicle Colors</mat-label>
+      <mat-label *ngIf="!loading">Vehicle Colors</mat-label>
       <mat-select [(value)]="selectedColor" [disabled]="!hasData">
         <mat-option *ngFor="let color of vehicleColors" [value]="color">{{ color }}</mat-option>
       </mat-select>
+
+      <mat-label *ngIf="loading">
+        <div class="spinner-container">
+          <span>Loading...</span>
+          <mat-spinner class="spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-label>
     </mat-form-field>
   </mat-sidenav>
 

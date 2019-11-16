@@ -9,7 +9,7 @@ import { VehicleService } from './vehicle/vehicle.service';
 import {
   MatAutocompleteModule,
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatIconModule, MatInputModule,
-  MatMenuModule,
+  MatMenuModule, MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
@@ -28,6 +28,7 @@ const materialModules = [
   MatAutocompleteModule,
   MatInputModule,
   MatSnackBarModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
