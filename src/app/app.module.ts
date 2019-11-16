@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleService } from './vehicle/vehicle.service';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatIconModule, MatMenuModule,
+  MatAutocompleteModule,
+  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatIconModule, MatInputModule,
+  MatMenuModule,
   MatSelectModule,
-  MatSidenavModule, MatToolbarModule
+  MatSidenavModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -23,6 +25,9 @@ const materialModules = [
   MatMenuModule,
   MatCheckboxModule,
   MatToolbarModule,
+  MatAutocompleteModule,
+  MatInputModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

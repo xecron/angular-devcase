@@ -2,6 +2,6 @@ export interface Vehicle {
   id: number;
   type: string;
   brand: string;
-  color: string[];
+  colors: string[];
   img: string;
 }

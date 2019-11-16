@@ -5,11 +5,3 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-@include mat-core();
-$primary: mat-palette($mat-deep-purple);
-$accent: mat-palette($mat-amber, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-dark-theme($primary, $accent, $warn); // Or mat-dark-theme
-
-@include angular-material-theme($theme);

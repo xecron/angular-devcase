@@ -8,4 +8,11 @@
   h5 {
     margin: 8px 0;
   }
+
+  .app-sidenav {
+    mat-form-field {
+      display: block;
+      padding: 16px;
+    }
+  }
 }

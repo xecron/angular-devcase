@@ -1,6 +1,28 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #sidenav mode="side" class="app-sidenav">
-   
+    <button mat-raised-button (click)="fetchVehicles()">Fetch Vehicles</button>
+    <button mat-raised-button (click)="resetFilters()">Reset Filters</button>
+
+    <mat-form-field>
+      <mat-label>Vehicle Types</mat-label>
+      <mat-select [(value)]="selectedType" [disabled]="!hasData">
+        <mat-option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Vehicle Brands</mat-label>
+      <mat-select [(value)]="selectedBrand" [disabled]="!hasData">
+        <mat-option *ngFor="let brand of vehicleBrands" [value]="brand">{{ brand }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Vehicle Colors</mat-label>
+      <mat-select [(value)]="selectedColor" [disabled]="!hasData">
+        <mat-option *ngFor="let color of vehicleColors" [value]="color">{{ color }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -15,4 +37,5 @@
 
     <p>Vehicle Works!</p>
   </mat-sidenav-content>
+
 </mat-sidenav-container>

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { VehicleService } from './vehicle.service';
 import { Subject } from 'rxjs/index';
 import { takeUntil } from 'rxjs/internal/operators';
-import {Vehicle} from './vehicle.interface';
+import { Vehicle } from './vehicle.interface';
 
 @Component({
   selector: 'app-vehicle',
@@ -11,7 +11,13 @@ import {Vehicle} from './vehicle.interface';
 })
 export class VehicleComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
-  public vehicles: Vehicle[];
+  private loading = false;
+
+  public vehicles: Vehicle[] = [];
+
+  public selectedType: string;
+  public selectedBrand: string;
+  public selectedColor: string;
 
   constructor(private vehicleService: VehicleService) {
     // Trigger fetching
@@ -24,16 +30,50 @@ export class VehicleComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (vehicles: Vehicle[]) => {
         this.vehicles = vehicles;
-        console.log(vehicles);
-      },
-      error: (error) => {
-        console.log(error);
+        this.loading = false;
       }
     });
   }
 
   fetchVehicles(): void {
+    this.loading = true;
     this.vehicleService.fetchVehicles();
+  }
+
+  resetFilters(): void {
+    this.selectedType = null;
+    this.selectedBrand = null;
+    this.selectedColor = null;
+  }
+
+  get vehicleTypes(): string[] {
+    return (!this.hasData) ? [] : this.vehicles
+      .map((vehicle) => vehicle.type)
+      .filter((elem, index, self) => index === self.indexOf(elem));
+  }
+
+  get vehicleBrands(): string[] {
+    return (!this.hasData) ? [] : this.vehicles
+      .map((vehicle) => vehicle.brand)
+      .filter((elem, index, self) => index === self.indexOf(elem));
+  }
+
+  get vehicleColors(): string[] {
+    if (!this.hasData) {
+        return [];
+    }
+
+    let colors = [];
+    this.vehicles.map((vehicle) => {
+      colors.push(...vehicle.colors);
+    });
+
+    colors = colors.filter((elem, index, self) => index === self.indexOf(elem));
+    return colors;
+  }
+
+  get hasData(): boolean {
+    return !this.loading && this.vehicles.length > 0;
   }
 
   ngOnDestroy(): void {
