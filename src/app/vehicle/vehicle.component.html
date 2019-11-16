@@ -1,1 +1,18 @@
-<p>vehicle works!</p>
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" class="app-sidenav">
+   
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <h5>
+      <button mat-icon-button color="primary" (click)="sidenav.toggle(); opened = !opened">
+        <mat-icon *ngIf="opened">menu_open</mat-icon>
+        <mat-icon *ngIf="!opened">menu</mat-icon>
+      </button>
+
+      Toggle Filters
+    </h5>
+
+    <p>Vehicle Works!</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>
