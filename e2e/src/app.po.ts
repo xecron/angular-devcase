@@ -6,7 +6,7 @@ export class AppPage {
   }
 
   get hasDataFetched(): boolean {
-    return (element(by.className('content-container')).isPresent();
+    return !!element(by.className('content-container'));
   }
 
   toggleSidebar(): void {

@@ -22,8 +22,12 @@ describe('workspace-project App', () => {
   });
 
 
-  // This is only for showcase purposes normally, there will be Integration Tests should be there.
+  // This is only for showcase purpose to fun :)
   const showDemo = () => {
+    if (!page.hasDataFetched) {
+      page.fetchData();
+    }
+
     page.toggleSidebar(); // Opens sidebar
     page.selectVehicleType();
     page.selectVehicleBrand();
@@ -35,12 +39,6 @@ describe('workspace-project App', () => {
     page.resetFilters();
     page.toggleSidebar();
   };
-
-  it('check data fetch', () => {
-    if (!page.hasDataFetched) {
-      page.fetchData();
-    }
-  });
 
   it('should run the demo in maximized screen', () => {
     browser.driver.manage().window().maximize();
