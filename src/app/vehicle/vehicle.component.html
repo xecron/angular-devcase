@@ -6,7 +6,7 @@
     <mat-form-field>
       <mat-label *ngIf="!loading">Vehicle Types</mat-label>
       <mat-select [(value)]="selectedType" [disabled]="!hasData">
-        <mat-option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</mat-option>
+        <mat-option *ngFor="let vehicle of vehicles | filter: {brand: selectedBrand} | filter: {colors: selectedColor} | deduplicate: {key: 'type'}" [value]="vehicle.type">{{ vehicle.type }}</mat-option>
       </mat-select>
 
       <mat-label *ngIf="loading">
@@ -20,7 +20,7 @@
     <mat-form-field>
       <mat-label *ngIf="!loading">Vehicle Brands</mat-label>
       <mat-select [(value)]="selectedBrand" [disabled]="!hasData">
-        <mat-option *ngFor="let brand of vehicleBrands" [value]="brand">{{ brand }}</mat-option>
+        <mat-option *ngFor="let vehicle of vehicles | filter: {type: selectedType} | filter: {colors: selectedColor} | deduplicate: {key: 'brand'}" [value]="vehicle.brand">{{ vehicle.brand }}</mat-option>
       </mat-select>
 
       <mat-label *ngIf="loading">
@@ -34,7 +34,7 @@
     <mat-form-field>
       <mat-label *ngIf="!loading">Vehicle Colors</mat-label>
       <mat-select [(value)]="selectedColor" [disabled]="!hasData">
-        <mat-option *ngFor="let color of vehicleColors" [value]="color">{{ color }}</mat-option>
+        <mat-option *ngFor="let color of vehicles | filter: {type: selectedType} | filter: {brand: selectedBrand} | spread: {key: 'colors'}" [value]="color">{{ color }}</mat-option>
       </mat-select>
 
       <mat-label *ngIf="loading">
@@ -58,7 +58,7 @@
 
     <div class="content-container">
       <div class="grid-row">
-        <div class="grid-item" *ngFor="let vehicle of vehicles">
+        <div class="grid-item" *ngFor="let vehicle of vehicles | filter: {type: selectedType} | filter: {colors: selectedColor} | filter: { brand: selectedBrand}">
           <div class="img-container">
             <img *ngIf="vehicle?.img" [src]="vehicle.img" [alt]="vehicle.brand" (error)="vehicle.img = errorImgSrc">
           </div>

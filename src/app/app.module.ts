@@ -15,6 +15,9 @@ import {
   MatSidenavModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
+import { FilterPipe } from './utils/filter.pipe';
+import { DeduplicatePipe } from './utils/deduplicate.pipe';
+import { SpreadPipe } from './utils/spread.pipe';
 
 const materialModules = [
   MatButtonModule,
@@ -35,7 +38,10 @@ const materialModules = [
 @NgModule({
   declarations: [
     AppComponent,
-    VehicleComponent
+    VehicleComponent,
+    FilterPipe,
+    DeduplicatePipe,
+    SpreadPipe
   ],
   imports: [
     BrowserModule,

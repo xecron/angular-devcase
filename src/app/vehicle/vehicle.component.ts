@@ -49,32 +49,6 @@ export class VehicleComponent implements OnInit, OnDestroy {
     this.selectedColor = null;
   }
 
-  get vehicleTypes(): string[] {
-    return (!this.hasData) ? [] : this.vehicles
-      .map((vehicle) => vehicle.type)
-      .filter((elem, index, self) => index === self.indexOf(elem));
-  }
-
-  get vehicleBrands(): string[] {
-    return (!this.hasData) ? [] : this.vehicles
-      .map((vehicle) => vehicle.brand)
-      .filter((elem, index, self) => index === self.indexOf(elem));
-  }
-
-  get vehicleColors(): string[] {
-    if (!this.hasData) {
-        return [];
-    }
-
-    let colors = [];
-    this.vehicles.map((vehicle) => {
-      colors.push(...vehicle.colors);
-    });
-
-    colors = colors.filter((elem, index, self) => index === self.indexOf(elem));
-    return colors;
-  }
-
   get hasData(): boolean {
     return !this.loading && this.vehicles.length > 0;
   }
