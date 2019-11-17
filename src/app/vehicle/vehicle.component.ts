@@ -19,6 +19,9 @@ export class VehicleComponent implements OnInit, OnDestroy {
   public selectedBrand: string;
   public selectedColor: string;
 
+  // If there is a broken link then we show error image
+  public errorImgSrc = '../../assets/blue-screen.jpg';
+
   constructor(private vehicleService: VehicleService) {
     // Trigger fetching
     this.fetchVehicles();

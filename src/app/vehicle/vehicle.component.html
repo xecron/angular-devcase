@@ -56,7 +56,15 @@
       Toggle Filters
     </h5>
 
-    <p>Vehicle Works!</p>
+    <div class="content-container">
+      <div class="grid-row">
+        <div class="grid-item" *ngFor="let vehicle of vehicles">
+          <div class="img-container">
+            <img *ngIf="vehicle?.img" [src]="vehicle.img" [alt]="vehicle.brand" (error)="vehicle.img = errorImgSrc">
+          </div>
+        </div>
+      </div>
+    </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

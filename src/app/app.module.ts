@@ -8,7 +8,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
 import { VehicleService } from './vehicle/vehicle.service';
 import {
   MatAutocompleteModule,
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatIconModule, MatInputModule,
+  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatIconModule,
+  MatInputModule,
   MatMenuModule, MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule, MatSnackBarModule, MatToolbarModule
