@@ -7,13 +7,13 @@ export class SpreadPipe implements PipeTransform {
 
   transform(values: any, args: { key: string }): any {
     const key = args.key;
-    const colors = [];
+    const newValues = [];
 
     values.map(value => {
-      colors.push(...value[key]);
+      newValues.push(...value[key]);
     });
 
-    // filter duplicate colors
-    return colors.filter((elem, index, self) => index === self.indexOf(elem));
+    // filter duplicate items after spread operation
+    return newValues.filter((elem, index, self) => index === self.indexOf(elem));
   }
 }

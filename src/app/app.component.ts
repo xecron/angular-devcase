@@ -14,7 +14,4 @@ export class AppComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/logo.svg`),
     );
   }
-  title = 'Angular-xecron';
-
-  opened: boolean;
 }
