@@ -48,7 +48,7 @@
 
   <mat-sidenav-content>
     <h5>
-      <button mat-icon-button color="primary" (click)="sidenav.toggle(); opened = !opened">
+      <button mat-icon-button color="primary" class="sidebar-toggle" (click)="sidenav.toggle(); opened = !opened">
         <mat-icon *ngIf="opened">menu_open</mat-icon>
         <mat-icon *ngIf="!opened">menu</mat-icon>
       </button>

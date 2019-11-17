@@ -13,6 +13,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
   private loading = false;
 
+
+  public opened = false;
   public vehicles: Vehicle[] = [];
 
   public selectedType: string;
