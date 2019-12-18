@@ -1,0 +1,70 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" class="app-sidenav">
+    <button mat-raised-button (click)="fetchVehicles()">Fetch Vehicles</button>
+    <button mat-raised-button (click)="resetFilters()">Reset Filters</button>
+
+    <mat-form-field>
+      <mat-label *ngIf="!loading">Vehicle Types</mat-label>
+      <mat-select [(value)]="selectedType" [disabled]="!hasData">
+        <mat-option *ngFor="let vehicle of vehicles | filter: {brand: selectedBrand} | filter: {colors: selectedColor} | deduplicate: {key: 'type'}" [value]="vehicle.type">{{ vehicle.type }}</mat-option>
+      </mat-select>
+
+      <mat-label *ngIf="loading">
+        <div class="spinner-container">
+          <span>Loading...</span>
+          <mat-spinner class="spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label *ngIf="!loading">Vehicle Brands</mat-label>
+      <mat-select [(value)]="selectedBrand" [disabled]="!hasData">
+        <mat-option *ngFor="let vehicle of vehicles | filter: {type: selectedType} | filter: {colors: selectedColor} | deduplicate: {key: 'brand'}" [value]="vehicle.brand">{{ vehicle.brand }}</mat-option>
+      </mat-select>
+
+      <mat-label *ngIf="loading">
+        <div class="spinner-container">
+          <span>Loading...</span>
+          <mat-spinner class="spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-label>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label *ngIf="!loading">Vehicle Colors</mat-label>
+      <mat-select [(value)]="selectedColor" [disabled]="!hasData">
+        <mat-option *ngFor="let color of vehicles | filter: {type: selectedType} | filter: {brand: selectedBrand} | spread: {key: 'colors'}" [value]="color">{{ color }}</mat-option>
+      </mat-select>
+
+      <mat-label *ngIf="loading">
+        <div class="spinner-container">
+          <span>Loading...</span>
+          <mat-spinner class="spinner" diameter="20"></mat-spinner>
+        </div>
+      </mat-label>
+    </mat-form-field>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <h5>
+      <button mat-icon-button color="primary" class="sidebar-toggle" (click)="sidenav.toggle(); opened = !opened">
+        <mat-icon *ngIf="opened">menu_open</mat-icon>
+        <mat-icon *ngIf="!opened">menu</mat-icon>
+      </button>
+
+      Toggle Filters
+    </h5>
+
+    <div class="content-container">
+      <div class="grid-row">
+        <div class="grid-item" *ngFor="let vehicle of vehicles | filter: {type: selectedType} | filter: {colors: selectedColor} | filter: { brand: selectedBrand}">
+          <div class="img-container">
+            <img *ngIf="vehicle?.img" [src]="vehicle.img" [alt]="vehicle.brand" (error)="vehicle.img = errorImgSrc">
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

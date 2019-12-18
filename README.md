@@ -90,3 +90,110 @@ To give you an idea what we expect from the implementation of the assignment we 
 * Is user experience taken into consideration.
 * How was the UI implemented.
 * Does the application work on all devices.
+
+
+
+## Assignment Documentation by Batu
+
+### Chapter 0
+Hello,
+
+Well, for the assignment. I will be guiding you much as possible via documentation and side notes.
+
+I use Angular, RxJS, Material Design. There is not necessity to use them of course, however I want to display
+my knowledge related to application since the vacancy is for Angular. 
+
+I try to keep things simple much as possible, 
+initial steps that I took:
+- use Angular-ClI to create angular enviroment in a default way possible
+- add Material design via Angular-CLI
+- add RxJS library
+- Generate vehicle component via Angular-CLI
+
+Personally I prefer to strict myself to not use external dependencies, only super popular things that everybody knows
+like Angular, React, RxJs, NgRx, Material design.
+
+And whenever I use them, I try to keep them simple possible for anybody who never used any of them should understand
+simply by checking the official docs.
+
+I spent 16 hours more and less.
+
+### Getting Started
+#####Dependencies:
+- Node@12
+- Npm
+
+Then simply install dependencies by
+```
+npm install
+```
+#####
+To serve the application: http://localhost:4200/
+
+```
+npm run start
+```
+
+#####
+To run unit tests
+
+```
+npm run test
+```
+
+#####
+Additionally I make something fun for showcase reason.
+This is not for integration test purposes, it is just for magic :)
+```
+npm run e2e
+```
+
+#####
+
+
+### Details
+
+* app.module is to check all the dependencies or modules we are importing
+
+* normally I would go for layout module for application layout, since this is demo I didn't want to go overkill
+Therefore layout is also party happening in vehicle.component
+
+* app.component.ts I am using matIconRegistry to use Sytac's Logo for better UI (that part is totally copy paste from internet)
+
+* I create the service file as a first thing to extract data, 
+to do that, I create a singleton file as vehicle.service.ts,
+create a subject vehicles$, to feed that subject I created a fetchVehicles method to use fetchData from trafficMeister.
+So whenever we fetchdata our vehicles$ subject will be emit value
+
+* Since we have the data correspondingly, I start building the layout and vehicle component together. As a design I thought 
+sidenav would be nice for both desktop and mobile views. And also application is something like media asset management.
+So for UX purposes more space for Images would be great.
+
+* As you can see fetchServices && ResetFilter buttons in vehicle.component is to help debug the app, I thought
+It also could be helpful for you guys to test and check edge cases too thats why I keep it
+
+* For the view parts, there is nothing super fancy, I follow default way of material-design. For responnsiveness and sizing
+I use media decorators with flex-box see -> vehile.component.scss
+
+* I think the most complex part is the pipes within the app, I wanted to use Angular Pipe's for filtering
+I find it quite reusable, My personal critism for that part could be more readable perhaps.
+
+* I write unit test after I finish the coding but I am able to go TDD as well.
+
+* For the broken Images, I choose blue-screen for windows for fun :)
+
+* In E2E I actually wanted to write integration tests too however I am really tired to be honest, instead I make a little
+showcase demo to make it up :)
+
+
+
+### Summary
+
+Well, It was fun a bit stressful for me because of the time. I actually ask 3 weeks but unexpected problems happen
+couldn't able to spare time as I've expected.
+
+I like the assignment overall, thanks for review in advance.
+
+Good Luck,
+Best,
+Batu
